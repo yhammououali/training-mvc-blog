@@ -8,12 +8,20 @@ class Router
 {
     public function run()
     {
-        if (isset($_GET['action'])) {
-            $action = $_GET['action'];
+        $route = $_GET['route'] ?? null;
+        $action = $_GET['action'] ?? null;
 
-            if ('post' === $action) {
-                return (new PostController())->read();
-            } elseif ('contact' === $action) {
+        if (isset($_GET['route'])) {
+            if ('post' === $route && $action) {
+                $postController = new PostController();
+
+                if ('create' === $action) {
+                    return $postController->create();
+                } elseif ('read' === $action && isset($_GET['id'])) {
+                    var_dump($_GET['id']);die;
+                    return $postController->read($_GET['id']);
+                }
+            } elseif ('contact' === $route) {
                 var_dump('contact');
             }
         } else {
