@@ -18,7 +18,6 @@ class Router
                 if ('create' === $action) {
                     return $postController->create();
                 } elseif ('read' === $action && isset($_GET['id'])) {
-                    var_dump($_GET['id']);die;
                     return $postController->read($_GET['id']);
                 }
             } elseif ('contact' === $route) {
