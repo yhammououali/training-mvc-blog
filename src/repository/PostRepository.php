@@ -24,6 +24,19 @@ class PostRepository extends Database
         return $this->buildObject($result->fetch());
     }
 
+    public function create(array $data = [])
+    {
+        $this->createQuery(
+            'INSERT INTO post (title, content, createdAt, authorId) VALUES (:title, :content, :createdAt, :authorId)',
+            [
+                'title' => $data['title'],
+                'content' => $data['content'],
+                'createdAt' => (new \DateTime())->format('Y-m-d H:i:s'),
+                'authorId' => 1,
+            ]
+        );
+    }
+
     private function buildObject(array $row): ModelPost
     {
         $post = new ModelPost;

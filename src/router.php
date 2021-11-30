@@ -19,6 +19,8 @@ class Router
                     return $postController->create();
                 } elseif ('read' === $action && isset($_GET['id'])) {
                     return $postController->read($_GET['id']);
+                } elseif ('update' === $action && isset($_GET['id'])) {
+                    return $postController->update($_GET['id']);
                 }
             } elseif ('contact' === $route) {
                 var_dump('contact');

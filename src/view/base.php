@@ -15,7 +15,9 @@
             </div>
         </div>
 
-        <?=  $content ?>
+        <div class="container">
+            <?=  $content ?>
+        </div>
 
         <footer>
             Copyright
